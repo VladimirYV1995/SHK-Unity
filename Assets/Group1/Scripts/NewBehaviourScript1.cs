@@ -13,18 +13,17 @@ public class Player : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
-                float directionX = 0;
-                float directionY = 0;
+                Vector3 direction = Vector3.zero;
 
                 if (Input.GetAxis("Horizontal") != 0)
                 {
-                    directionX = Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal"));
+                    direction.x = Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal"));
                 }
                 if (Input.GetAxis("Vertical") != 0)
                 {
-                    directionY = Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical"));
+                    direction.y = Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical"));
                 }
-                _transform.Translate(new Vector3(directionX, directionY, 0) * _speed * Time.deltaTime);
+                _transform.Translate(direction * _speed * Time.deltaTime);
             }
         }
     }
