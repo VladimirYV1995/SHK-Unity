@@ -8,23 +8,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float _CountTime = 2;
 
     private void Update()
-    {  
-        if (Input.anyKey)
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            {
-                Vector3 direction = Vector3.zero;
+            Vector3 direction = Vector3.zero;
 
-                if (Input.GetAxis("Horizontal") != 0)
-                {
-                    direction.x = Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal"));
-                }
-                if (Input.GetAxis("Vertical") != 0)
-                {
-                    direction.y = Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical"));
-                }
-                _transform.Translate(direction * _speed * Time.deltaTime);
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                direction.x = Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal"));
             }
+            if (Input.GetAxis("Vertical") != 0)
+            {
+                direction.y = Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical"));
+            }
+            _transform.Translate(direction * _speed * Time.deltaTime);
         }
     }
 
