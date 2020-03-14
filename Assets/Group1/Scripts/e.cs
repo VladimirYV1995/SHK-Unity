@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class e : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    private Vector3 Target;
+    [SerializeField] private Transform _transform;
+    [SerializeField] private float _speed = 2;
+    [SerializeField] private float _radiusTarget = 4;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 _target;
+   
+    private void Start()
+    {        
+        _target = _transform.position;
+    }
+   
+    private void Update()
     {
-        Target = Random.insideUnitCircle * 4;
+         MoveToTarget();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void MoveToTarget()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target, 2 * Time.deltaTime);
-        if (transform.position == Target)
-            Target = Random.insideUnitCircle * 4    ;
+        if (_transform.position == _target)
+        {
+            _target = Random.insideUnitCircle * _radiusTarget;
+        }
+
+        _transform.position = Vector3.MoveTowards(_transform.position, _target, _speed * Time.deltaTime);
     }
+
+   
 }

@@ -1,65 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public float spEed;
-    public bool timer;
-    public float time;
-    // Use this for initialization
+    [SerializeField] private Transform _transform;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _CountTime = 2;
 
-
-    void Start()
+    private void Update()
     {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            Vector3 direction = Vector3.zero;
+
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                direction.x = Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal"));
+            }
+            if (Input.GetAxis("Vertical") != 0)
+            {
+                direction.y = Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical"));
+            }
+            _transform.Translate(direction * _speed * Time.deltaTime);
+        }
     }
-    // Update is called once per frame
-    void Update(){
-        if (timer)
+
+    public void IncreaseSpeed()
+    {
+        _speed *= 2;
+        StartCoroutine(ReduceSpeed(_CountTime));
+    }
+
+    private IEnumerator ReduceSpeed(float time)
+    {
+        while (time > 0)
         {
             time -= Time.deltaTime;
-            if(time < 0)
-   {
-                timer = false;
-                spEed /= 2;
-            }
+            yield return null;
         }
-
-        GameObject[] result = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if(result.Length == 0)
-        {
-            GameController.controller.End();
-            enabled = false;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-            transform.Translate(0, spEed * Time.deltaTime, 0);
-
-        if (Input.GetKey(KeyCode.S))
-            transform.Translate(0, -spEed * Time.deltaTime, 0);
-
-        if (Input.GetKey(KeyCode.A))
-            transform.Translate(-spEed * Time.deltaTime, 0, 0);
-
-        if (Input.GetKey(KeyCode.D))
-            transform.Translate(spEed * Time.deltaTime, 0, 0);
-    }
-
-    public void SendMEssage(GameObject b)
-    {
-
-
-        if(b.name == "enemy")
-        {
-            Destroy(b);
-        }if(b.name == "speed")
-        {
-            spEed *= 2;
-            timer = true;
-            time = 2;
-
-
-
-        }
+        _speed /= 2;
+        StopCoroutine(ReduceSpeed(time));
     }
 }
