@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeterminatorEnvirment : MonoBehaviour
+public class DeterminatorEnviroment : MonoBehaviour
 {
     [SerializeField] private GameObject _final;
     [SerializeField] private GameObject[] _others;
