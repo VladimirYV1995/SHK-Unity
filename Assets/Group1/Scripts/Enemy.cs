@@ -5,16 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
+    [SerializeField] private Player _player;
     [SerializeField] private float _deleteDistance = 0.2f;
     [SerializeField] private float _speed = 2;
     [SerializeField] private float _radiusInstantiate = 4;
 
     private Vector3 _target;
-    private Player _player;   
+      
 
     private void Start()
     {
-        _player = FindObjectOfType<Player>();
         _target = _transform.position;
     }
 

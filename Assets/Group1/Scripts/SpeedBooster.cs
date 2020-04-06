@@ -5,14 +5,8 @@ using UnityEngine;
 public class SpeedBooster : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
+    [SerializeField] private Player _player;
     [SerializeField] private float _speedBoostDistance = 0.2f;
-
-    private Player _player;
-
-    private void Start()
-    {
-        _player = FindObjectOfType<Player>();
-    }
 
     private void Update()
     {

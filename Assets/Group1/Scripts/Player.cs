@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
+    [SerializeField] private Enemy[] _enemies;
     [SerializeField] private GameObject _final;
     [SerializeField] private float _speed;
     [SerializeField] private float _countTime = 2;
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _countEnemys = FindObjectsOfType<Enemy>().Length;
+        _countEnemys = _enemies.Length;
     }
 
     private void Update()
@@ -25,21 +26,21 @@ public class Player : MonoBehaviour
 
     private void TryMove()
     {
-        Vector2 direction = DeterminateDirection();
+        Vector2 direction = CalculateMoveDirection();
         if (direction != Vector2.zero)
         {
             _transform.Translate(direction * _speed * Time.deltaTime);
         }       
     }
 
-    private Vector2 DeterminateDirection()
+    private Vector2 CalculateMoveDirection()
     {
-        int x = DeterminateAxis(Input.GetAxis("Horizontal"));
-        int y = DeterminateAxis(Input.GetAxis("Vertical"));
+        int x = GetValueAxis(Input.GetAxis("Horizontal"));
+        int y = GetValueAxis(Input.GetAxis("Vertical"));
         return new Vector2(x, y);
     }
 
-    private int DeterminateAxis(float valueAxis)
+    private int GetValueAxis(float valueAxis)
     {
         if(valueAxis != 0 )
         {
