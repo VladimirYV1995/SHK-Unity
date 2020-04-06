@@ -6,12 +6,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
     [SerializeField] private Player _player;
+    [SerializeField] private Final _final;
     [SerializeField] private float _deleteDistance = 0.2f;
     [SerializeField] private float _speed = 2;
     [SerializeField] private float _radiusInstantiate = 4;
 
-    private Vector3 _target;
-      
+    private Vector3 _target;      
 
     private void Start()
     {
@@ -36,9 +36,9 @@ public class Enemy : MonoBehaviour
         _transform.position = Vector3.MoveTowards(_transform.position, _target, _speed * Time.deltaTime);
     }
 
-    public void Delete()
+    private void Delete()
     {
-        _player.CheckEndGame();
+        _final.CheckEndGame();
         Destroy(gameObject);      
     }
 }

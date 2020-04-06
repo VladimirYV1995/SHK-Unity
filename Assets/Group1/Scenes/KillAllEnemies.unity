@@ -280,6 +280,11 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1761935012}
+    - target: {fileID: 2149027605106393091, guid: a9a6d2aa6b8cac14db7d31058a642122,
+        type: 3}
+      propertyPath: _final
+      value: 
+      objectReference: {fileID: 1612217112}
     - target: {fileID: 2149027605106393095, guid: a9a6d2aa6b8cac14db7d31058a642122,
         type: 3}
       propertyPath: m_Name
@@ -454,6 +459,11 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1761935012}
+    - target: {fileID: 2149027605106393091, guid: a9a6d2aa6b8cac14db7d31058a642122,
+        type: 3}
+      propertyPath: _final
+      value: 
+      objectReference: {fileID: 1612217112}
     - target: {fileID: 2149027605106393095, guid: a9a6d2aa6b8cac14db7d31058a642122,
         type: 3}
       propertyPath: m_Name
@@ -541,6 +551,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1612217111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612217113}
+  - component: {fileID: 1612217112}
+  m_Layer: 0
+  m_Name: EndGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1612217112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612217111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5d2c97dbe7285438667b2d35d51c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _final: {fileID: 1054253062}
+  _enemies:
+  - {fileID: 1785583742}
+  - {fileID: 818282884}
+  - {fileID: 2101816964}
+  - {fileID: 1820388659}
+--- !u!4 &1612217113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612217111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761935009
 GameObject:
@@ -637,12 +696,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1761935011}
-  _enemies:
-  - {fileID: 1785583742}
-  - {fileID: 818282884}
-  - {fileID: 2101816964}
-  - {fileID: 1820388659}
-  _final: {fileID: 1054253062}
   _speed: 1
   _countTime: 2
 --- !u!114 &1785583742 stripped
@@ -736,6 +789,11 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1761935012}
+    - target: {fileID: 2149027605106393091, guid: a9a6d2aa6b8cac14db7d31058a642122,
+        type: 3}
+      propertyPath: _final
+      value: 
+      objectReference: {fileID: 1612217112}
     - target: {fileID: 2149027605106393095, guid: a9a6d2aa6b8cac14db7d31058a642122,
         type: 3}
       propertyPath: m_Name
@@ -896,6 +954,11 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1761935012}
+    - target: {fileID: 2149027605106393091, guid: a9a6d2aa6b8cac14db7d31058a642122,
+        type: 3}
+      propertyPath: _final
+      value: 
+      objectReference: {fileID: 1612217112}
     - target: {fileID: 2149027605106393095, guid: a9a6d2aa6b8cac14db7d31058a642122,
         type: 3}
       propertyPath: m_Name

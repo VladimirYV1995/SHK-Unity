@@ -4,20 +4,12 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private Enemy[] _enemies;
-    [SerializeField] private GameObject _final;
     [SerializeField] private float _speed;
     [SerializeField] private float _countTime = 2;
 
-    private int _countEnemys;
     private bool _onCorutine;
 
     public bool OnCorutine => _onCorutine;
-
-    private void Start()
-    {
-        _countEnemys = _enemies.Length;
-    }
 
     private void Update()
     {
@@ -26,21 +18,21 @@ public class Player : MonoBehaviour
 
     private void TryMove()
     {
-        Vector2 direction = CalculateMoveDirection();
+        Vector2 direction = CreateDirection();
         if (direction != Vector2.zero)
         {
             _transform.Translate(direction * _speed * Time.deltaTime);
         }       
     }
 
-    private Vector2 CalculateMoveDirection()
+    private Vector2 CreateDirection()
     {
-        int x = GetValueAxis(Input.GetAxis("Horizontal"));
-        int y = GetValueAxis(Input.GetAxis("Vertical"));
+        int x = CalculateValueAxis(Input.GetAxis("Horizontal"));
+        int y = CalculateValueAxis(Input.GetAxis("Vertical"));
         return new Vector2(x, y);
     }
 
-    private int GetValueAxis(float valueAxis)
+    private int CalculateValueAxis(float valueAxis)
     {
         if(valueAxis != 0 )
         {
@@ -50,18 +42,7 @@ public class Player : MonoBehaviour
         {
             return 0;
         }
-    }
-
-    public void CheckEndGame()
-    {
-        _countEnemys--;
-
-        if (_countEnemys == 0)
-        {
-            _final.SetActive(true);
-            enabled = false;
-        }
-    }
+    }    
 
     public void IncreaseSpeed()
     {
